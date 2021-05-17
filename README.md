@@ -1,4 +1,4 @@
-# PhenoSOM
+# PhenoSOM: An R script for identifying clusters with differential abundance in mass cytometry data
 
 
 <img src="https://raw.githubusercontent.com/esimonds/PhenoSOM/main/FR-FCM-Z3HK_demo/FR-FCM-Z3HK_Demo_Step2_success.png" alt="tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster" width="250"/>
@@ -9,30 +9,30 @@
 
 
 
-## What is PhenoSOM?
+## Q: What is PhenoSOM?
 PhenoSOM is an R script to bring together the published FlowSOM, PhenoGraph, and edgeR algorithms into a single pipeline for differential analysis of cluster abundance in mass cytometry data.
 
 It was used to perform the clustering, differential analyses, and generate the volcano plots in [Simonds et al. _J Immunother Cancer_ (2021)](http://doi.org/10.1136/jitc-2020-002181).
 
 
-## Should I use PhenoSOM to analyze my own mass cytometry data?
+## Q: Should I use PhenoSOM to analyze my own mass cytometry data?
 Probably not, for the reasons below. I would recommend using more recent or more actively developed mass cytometry data analysis tools. Check out [Cytoforum](http://cytoforum.stanford.edu) for an active community of mass cytometry users and discussions on the latest algorithms. This script was born in 2016 and many new analysis tools have been published in the years since.
 
 If you're savvy with R, then sure, have fun with it. Just be aware that PhenoSOM doesn't do anything particularly novel -- it simply strings together a few existing R packages that were created by and are maintained by others. PhenoSOM is not an R package. It's just a script, and it is not actively maintained or supported. The help documentation is essentially this README plus the comments in the script itself. I am mainly depositing it here on GitHub for posterity. 
 
 
-## Who should use PhenoSOM?
+## Q: Who should use PhenoSOM?
 The main audience for this GitHub project is bioinformatics researchers who would like to compare and contrast approaches for clustering and/or differential analysis. I think the core workflow of PhenoSOM (e.g. FlowSOM of individual files followed by PhenoGraph of the aggregate) has merit and if it stands up to some more rigorous testing, perhaps someone would be motivated to implement it in a smarter, more user-friendly way. This script evolved a lot over 5 years, and I am not a professional programmer, so I apologize in advance that the code is inelegant, to say the least.
 
 In addiiton to bioinformatics researchers, there is a small subset of mass cytometry users at UCSF that have been using the PhenoSOM script in their own research since 2016, and this project is also meant to serve as a resource for them.
 
 
 
-## I'm a bioinformatics researcher and I want to reproduce Figure 1B from Simonds et al (2021) -- how can I do that?
+## Q: I'm a bioinformatics researcher and I want to reproduce Figure 1A-B from Simonds et al (2021) -- how can I do that?
 Great! There is a dedicated helper script to make this easier. Please check out the [FR-FCM-Z3HK_demo README](FR-FCM-Z3HK_demo/DemoReadme.md)
 
 
-## What are the general steps to configure and run PhenoSOM?
+## Q: What are the general steps to configure and run PhenoSOM?
 1. Install Rstudio (this is required)
 2. Install the required packages from BioConductor and CRAN  
 ```R
@@ -58,11 +58,11 @@ BiocManager::install("FlowSOM")
 12. Open the **PhenoSOM Step 3.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
 
 
-## Something isn't working right. What should I try to troubleshoot it?
+## Q: Something isn't working right. What should I try to troubleshoot it?
 Try following the [FR-FCM-Z3HK_demo](FR-FCM-Z3HK_demo/DemoReadme.md) to help determine if it's something with your setup (e.g. packages) or the input files. Once you get the demo working properly and you have a sense of how the different scripts relate to each other, it will be easier to replace the demo files with your own data.
 
 
-## What package versions are required?
+## Q: What package versions are required?
 The demo script was tested on a Mac with Rstudio version 1.3.959, R version 4.0.3 and the following package versions:
 ```R
 > packageVersion("Rtsne")
@@ -85,5 +85,5 @@ The demo script was tested on a Mac with Rstudio version 1.3.959, R version 4.0.
 [1] ‘2.0.1’
 ```
 
-## My package versions look fine and I'm still having trouble. Who can I contact for help?
+## Q: My package versions look fine and I'm still having trouble. Who can I contact for help?
 Please file a bug report under https://github.com/esimonds/PhenoSOM/issues and I will get an alert. I will try to respond to new issues with 7 days. I no longer work at UCSF where this script was developed, so maintenance/troubleshooting is something that I have to do in my free time. That being said, I would like others to explore the core worfklow of PhenoSOM and hopefully someone will find it useful, or it will inspire a new, better approach for analyzing mass cytometry data.
