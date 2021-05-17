@@ -18,7 +18,7 @@ It was used to perform the clustering, differential analyses, and generate the v
 ## Q: Should I use PhenoSOM to analyze my own mass cytometry data?
 Probably not, for the reasons below. I would recommend using more recent or more actively developed mass cytometry data analysis tools. Check out [Cytoforum](http://cytoforum.stanford.edu) for an active community of mass cytometry users and discussions on the latest algorithms. This script was born in 2016 and many new analysis tools have been published in the years since.
 
-If you're savvy with R, then sure, have fun with it. Just be aware that PhenoSOM doesn't do anything particularly novel -- it simply strings together a few existing R packages that were created by and are maintained by others. PhenoSOM is not an R package. It's just a script, and it is not actively maintained or supported. The help documentation is essentially this README plus the comments in the script itself. I am mainly depositing it here on GitHub for posterity. 
+Please also be aware that PhenoSOM doesn't do anything particularly novel -- it simply strings together a few existing R packages that were created by and are maintained by others. PhenoSOM is not an R package. It's just a script, and it is not actively maintained or supported. The help documentation is essentially this README plus the comments in the script itself. I am mainly depositing it here on GitHub for posterity. If you're savvy with R and, despite all these caveats, you want to run your data through PhenoSOM, then have fun and I hope it's useful to you.
 
 
 ## Q: Who should use PhenoSOM?
