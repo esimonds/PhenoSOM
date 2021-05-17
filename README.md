@@ -10,7 +10,7 @@
 
 
 ## Q: What is PhenoSOM?
-PhenoSOM is an R script to bring together the published FlowSOM, PhenoGraph, and edgeR algorithms into a single pipeline for differential analysis of cluster abundance in mass cytometry data.
+PhenoSOM is an R script that links the published FlowSOM, PhenoGraph, and edgeR algorithms into a single pipeline for differential analysis of cluster abundance in mass cytometry data.
 
 It was used to perform the clustering, differential analyses, and generate the volcano plots in [Simonds et al. _J Immunother Cancer_ (2021)](http://doi.org/10.1136/jitc-2020-002181).
 
