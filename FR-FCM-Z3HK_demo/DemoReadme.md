@@ -14,15 +14,14 @@ Note: The input data for this demo is 2.86GB. It takes about 3 hours (mostly una
 
 It should look like this:
 
-![tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster](FR-FCM-Z3HK_Demo_Step2_success.png)
+<img src="https://raw.githubusercontent.com/esimonds/PhenoSOM/main/FR-FCM-Z3HK_demo/FR-FCM-Z3HK_Demo_Step2_success.png" alt="tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster" width="250"/>
 
 7. Continue with running Step 3.
 8. After running Step 3, check if your output matches the figure in the demo. Open the PNG file located at **Your_analysis_folder/PhenoSOM_Step3_output/edgeR_Run1_Glioma_vs_Kidney/edgeR_Run1_Glioma_vs_Kidney metaclusters edgeR volcano plot.pdf**
 
 It should look like this:
 
-![tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster](FR-FCM-Z3HK_Demo_Step3_success.png)
-
+<img src="https://raw.githubusercontent.com/esimonds/PhenoSOM/main/FR-FCM-Z3HK_demo/FR-FCM-Z3HK_Demo_Step3_success.png" alt="Volcano plot of Glioma vs Kidney" width="250"/>
 
 ## Q: How long does each step take?
 A:  About 2.5 hours for Step 1, 25 minutes for Step 2, and 1 minute for Step 3 (timing is based on a 2016 Macbook Pro).
