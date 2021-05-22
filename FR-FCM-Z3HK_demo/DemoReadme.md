@@ -5,7 +5,7 @@ Note: The input data for this demo is 2.86GB. It takes about 3 hours (mostly una
 
 ## Goal of the demo:
 By following this demo, you will recreate the plots in Figure 1A (center panel) and Figure 1B (volcano plot and heatmap) from Simonds et al *JITC* (2021)
-<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/Demo%20output%20verification/Simonds%20et%20al%20JITC%202021%20Figure%201.png" alt="Simonds et al JITC 2021 Figure 1" width="250"/>
+<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/images/Simonds_et_al_JITC_2021_Figure_1.png" alt="Simonds et al JITC 2021 Figure 1" width="250"/>
 
 ## Steps to run the demo:
 
@@ -17,20 +17,20 @@ By following this demo, you will recreate the plots in Figure 1A (center panel) 
 
 It should look like this:
 
-<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/Demo%20output%20verification/FR-FCM-Z3HK_Demo_Step1_output_success.png" alt="tSNE plot of Step 1 SOM nodes colored by PhenoGraph cluster" width="250"/>
+<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/images/FR-FCM-Z3HK_Demo_Step1_output_success.png" alt="tSNE plot of Step 1 SOM nodes colored by PhenoGraph cluster" width="250"/>
 
 6. After running Step 2, check if your output matches the figure in the demo. Open the PNG file located at **Your_analysis_folder/Maps and plots of SOM nodes/FR-FCM-Z3HK Panel 1 PhenoSOM Step 2 tSNE map of SOM nodes by Rphenograph metacluster k_30 and size scaled to cell number.png** 
 
 It should look like this:
 
-<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/Demo%20output%20verification/FR-FCM-Z3HK_Demo_Step2_output_success.png" alt="tSNE plot of Step 2 SOM nodes colored by PhenoGraph cluster" width="250"/>
+<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/images/FR-FCM-Z3HK_Demo_Step2_output_success.png" alt="tSNE plot of Step 2 SOM nodes colored by PhenoGraph cluster" width="250"/>
 
 7. Continue with running Step 3.
 8. After running Step 3, check if your output matches the figure in the demo. Open the PNG file located at **Your_analysis_folder/PhenoSOM_Step3_output/edgeR_Run1_Glioma_vs_Kidney/edgeR_Run1_Glioma_vs_Kidney metaclusters edgeR volcano plot.pdf**
 
 It should look like this:
 
-<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/Demo%20output%20verification/FR-FCM-Z3HK_Demo_Step3_output_success.png" alt="Volcano plot of Glioma vs Kidney" width="250"/>
+<img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/images/FR-FCM-Z3HK_Demo_Step3_output_success.png" alt="Volcano plot of Glioma vs Kidney" width="250"/>
 
 ## Q: How long does each step take?
 A:  About 2.5 hours for Step 1, 25 minutes for Step 2, and 1 minute for Step 3 (timing is based on a 2016 Macbook Pro).
