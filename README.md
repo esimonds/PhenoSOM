@@ -28,11 +28,11 @@ In addiiton to bioinformatics researchers, there is a small subset of mass cytom
 
 
 
-## Q: I'm a bioinformatics researcher and I want to reproduce Figure 1A-B from Simonds et al (2021) -- how can I do that?
-Great! There is a dedicated helper script to make this easier. Please check out the [FR-FCM-Z3HK_demo README](FR-FCM-Z3HK_demo/DemoReadme.md)
+## Q: How can I get started running PhenoSOM?
+The best way to get started with PhenoSOM is to run it on the demo dataset. There is a dedicated helper script to make this easier. First, follow the installation instructions below, and then check out the [FR-FCM-Z3HK_demo README](FR-FCM-Z3HK_demo/DemoReadme.md)
 
 
-## Q: What are the general steps to configure and run PhenoSOM?
+## Q: How do I install PhenoSOM?
 1. Install Rstudio (this is required)
 2. Install the required packages from BioConductor and CRAN  
 ```R
@@ -48,14 +48,16 @@ BiocManager::install("FlowSOM")
 
 ```
 4. Install the cytofkit2 package from GitHub **-- not BioConductor! --** as described on the [CytofKit2 GitHub page](https://github.com/JinmiaoChenLab/cytofkit2)
-5. Download the R scripts, TXT files, and CSV files from this GitHub project to your analysis folder.
-6. Create a subfolder under your analysis folder called **FCSfiles** and put your input files there. It's a good idea to gate the files first to enrich for viable singlets, but the script has been used successfully on ungated files in the past. All input files must have the same staining panel (e.g. set of channels and markers)
-7. Modify **clustering markers.txt** to include the channel and marker names of the markers you want to use for clustering. Omit any very noisy markers or general channels (e.g. DNA). Try to include only markers that you think will help identify consistent cell phenotypes across your input files. Be careful including dynamic markers that are not tied to cell fate (e.g. Ki67) because the algorithm is likely to bisect a cell type (e.g. CD8 T cells) based on Ki67-high and Ki67-low (however, in some cases, that's what you want).
-8. Modify **plotting markers.txt** to include the channel and marker names of the markers you want to use for plotting. Anything on this list will be included in the generated heatmaps. If you excluded Ki-67 in the step above, you can include it here and it will not affect clustering, but you can see it on the heatmaps.
-9. Modify **edgeR_setup.csv** to define a "Condition" associated with each of your input files. The goal here is to do an A vs. B comparison, so you only want two conditions. If you have files that are not part of condition A or B, assign the condition "NA". Note that the Condition value that comes earliest in the alphabet will be used as the denominator or baseline. For example, if you assign the Conditions "DrugA" and "DrugB", the script will express the data as fold-change in the abundance of populations in your "DrugB" samples relative to your "DrugA" samples.
-10. Open the **PhenoSOM Step 1.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
-11. Open the **PhenoSOM Step 2.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
-12. Open the **PhenoSOM Step 3.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
+
+## Q. I don't want to run the demo - what are the general steps to configure and run PhenoSOM?
+1. Download the R scripts, TXT files, and CSV files from this GitHub project to your analysis folder.
+2. Create a subfolder under your analysis folder called **FCSfiles** and put your input files there. It's a good idea to gate the files first to enrich for viable singlets, but the script has been used successfully on ungated files in the past. All input files must have the same staining panel (e.g. set of channels and markers)
+3. Modify **clustering markers.txt** to include the channel and marker names of the markers you want to use for clustering. Omit any very noisy markers or general channels (e.g. DNA). Try to include only markers that you think will help identify consistent cell phenotypes across your input files. Be careful including dynamic markers that are not tied to cell fate (e.g. Ki67) because the algorithm is likely to bisect a cell type (e.g. CD8 T cells) based on Ki67-high and Ki67-low (however, in some cases, that's what you want).
+4. Modify **plotting markers.txt** to include the channel and marker names of the markers you want to use for plotting. Anything on this list will be included in the generated heatmaps. If you excluded Ki-67 in the step above, you can include it here and it will not affect clustering, but you can see it on the heatmaps.
+5. Modify **edgeR_setup.csv** to define a "Condition" associated with each of your input files. The goal here is to do an A vs. B comparison, so you only want two conditions. If you have files that are not part of condition A or B, assign the condition "NA". Note that the Condition value that comes earliest in the alphabet will be used as the denominator or baseline. For example, if you assign the Conditions "DrugA" and "DrugB", the script will express the data as fold-change in the abundance of populations in your "DrugB" samples relative to your "DrugA" samples.
+6. Open the **PhenoSOM Step 1.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
+7. Open the **PhenoSOM Step 2.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
+8. Open the **PhenoSOM Step 3.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
 
 
 ## Q: Something isn't working right. What should I try to troubleshoot it?
