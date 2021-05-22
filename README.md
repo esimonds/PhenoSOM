@@ -36,43 +36,17 @@ The best way to get started with PhenoSOM is to run it on the demo dataset. Ther
 PhenoSOM is a series of R scripts -- it is not an R package. However, some existing R packages are required for PhenoSOM to work. Visit the [Installing PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Installing-PhenoSOM) for details.
 
 
-## Q. I don't want to run the demo - what are the general steps to configure and run PhenoSOM?
-1. Download the R scripts, TXT files, and CSV files from this GitHub project to your analysis folder.
-2. Create a subfolder under your analysis folder called **FCSfiles** and put your input files there. It's a good idea to gate the files first to enrich for viable singlets, but the script has been used successfully on ungated files in the past. All input files must have the same staining panel (e.g. set of channels and markers)
-3. Modify **clustering markers.txt** to include the channel and marker names of the markers you want to use for clustering. Omit any very noisy markers or general channels (e.g. DNA). Try to include only markers that you think will help identify consistent cell phenotypes across your input files. Be careful including dynamic markers that are not tied to cell fate (e.g. Ki67) because the algorithm is likely to bisect a cell type (e.g. CD8 T cells) based on Ki67-high and Ki67-low (however, in some cases, that's what you want).
-4. Modify **plotting markers.txt** to include the channel and marker names of the markers you want to use for plotting. Anything on this list will be included in the generated heatmaps. If you excluded Ki-67 in the step above, you can include it here and it will not affect clustering, but you can see it on the heatmaps.
-5. Modify **edgeR_setup.csv** to define a "Condition" associated with each of your input files. The goal here is to do an A vs. B comparison, so you only want two conditions. If you have files that are not part of condition A or B, assign the condition "NA". Note that the Condition value that comes earliest in the alphabet will be used as the denominator or baseline. For example, if you assign the Conditions "DrugA" and "DrugB", the script will express the data as fold-change in the abundance of populations in your "DrugB" samples relative to your "DrugA" samples.
-6. Open the **PhenoSOM Step 1.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
-7. Open the **PhenoSOM Step 2.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
-8. Open the **PhenoSOM Step 3.R** script in Rstudio and update the variables under "User-defined parameters" section. Then, run it.
+## Q. How do I configure and run PhenoSOM on my own data?
+First, install the required R packages as described above. Perferably, follow the [FR-FCM-Z3HK_demo](https://github.com/esimonds/PhenoSOM/wiki/Running-the-FR-FCM-Z3HK-demo) to make sure everything is working properly. Then, visit [Configuring PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Configuring-PhenoSOM) for details on how to configure the scripts for your own dataset.
 
 
 ## Q: Something isn't working right. What should I try to troubleshoot it?
-Try following the [FR-FCM-Z3HK_demo](FR-FCM-Z3HK_demo/DemoReadme.md) to help determine if it's something with your setup (e.g. packages) or the input files. Once you get the demo working properly and you have a sense of how the different scripts relate to each other, it will be easier to replace the demo files with your own data.
+Try following the [FR-FCM-Z3HK_demo](https://github.com/esimonds/PhenoSOM/wiki/Running-the-FR-FCM-Z3HK-demo) to help determine if it's something with your setup (e.g. packages) or the input files. Once you get the demo working properly and you have a sense of how the different scripts relate to each other, it will be easier to replace the demo files with your own data.
 
 
 ## Q: What package versions are required?
-The demo script was tested on a Mac with Rstudio version 1.3.959, R version 4.0.3 and the following package versions:
-```R
-> packageVersion("Rtsne")
-[1] ‘0.15’
-> packageVersion("ggplot2")
-[1] ‘3.3.3’
-> packageVersion("RColorBrewer")
-[1] ‘1.1.2’
-> packageVersion("gplots")
-[1] ‘3.1.1’
-> packageVersion("tidyr")
-[1] ‘1.1.3’
-> packageVersion("data.table")
-[1] ‘1.14.0’
-> packageVersion("flowCore")
-[1] ‘2.0.1’
-> packageVersion("FlowSOM")
-[1] ‘1.20.0’
-> packageVersion("cytofkit2")
-[1] ‘2.0.1’
-```
+More info at [Installing PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Installing-PhenoSOM)
+
 
 ## Q: My package versions look fine and I'm still having trouble. Who can I contact for help?
-Please file a bug report under https://github.com/esimonds/PhenoSOM/issues and I will get an alert. I will try to respond to new issues with 7 days. I no longer work at UCSF where this script was developed, so maintenance/troubleshooting is something that I have to do in my free time. That being said, I would like others to explore the core worfklow of PhenoSOM and hopefully someone will find it useful, or it will inspire a new, better approach for analyzing mass cytometry data.
+Please file a bug report under https://github.com/esimonds/PhenoSOM/issues and I will get an alert. I will try to respond to new issues with 7 days. I no longer work at UCSF where this script was developed, so maintenance/troubleshooting is something that I have to do in my free time. That being said, I would like others to explore the core worfklow of PhenoSOM and hopefully someone will find it useful, or it will inspire better approaches for analyzing mass cytometry data.
