@@ -29,25 +29,12 @@ In addiiton to bioinformatics researchers, there is a small subset of mass cytom
 
 
 ## Q: How can I get started running PhenoSOM?
-The best way to get started with PhenoSOM is to run it on the demo dataset. There is a dedicated helper script to make this easier. First, follow the installation instructions below, and then check out the [FR-FCM-Z3HK_demo README](FR-FCM-Z3HK_demo/DemoReadme.md)
+The best way to get started with PhenoSOM is to run it on the demo dataset. There is a dedicated helper script to make this easier. First, follow the installation instructions below, and then visit [Running the FR-FCM-Z3HK_demo](https://github.com/esimonds/PhenoSOM/wiki/Running-the-FR-FCM-Z3HK-demo)
 
 
 ## Q: How do I install PhenoSOM?
-1. Install Rstudio (this is required)
-2. Install the required packages from BioConductor and CRAN  
-```R
-install.packages(c("Rtsne", "ggplot2", "RColorBrewer", "gplots", "tidyr", "data.table"))
-```
-3. Install the required packages from BioConductor and CRAN  
-```R
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+PhenoSOM is a series of R scripts -- it is not an R package. However, some existing R packages are required for PhenoSOM to work. Visit the [Installing PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Installing-PhenoSOM) for details.
 
-BiocManager::install("flowCore")
-BiocManager::install("FlowSOM")
-
-```
-4. Install the cytofkit2 package from GitHub **-- not BioConductor! --** as described on the [CytofKit2 GitHub page](https://github.com/JinmiaoChenLab/cytofkit2)
 
 ## Q. I don't want to run the demo - what are the general steps to configure and run PhenoSOM?
 1. Download the R scripts, TXT files, and CSV files from this GitHub project to your analysis folder.
