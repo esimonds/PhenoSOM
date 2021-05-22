@@ -12,7 +12,7 @@ By following this demo, you will recreate the plots in Figure 1A (center panel) 
 
 1. Install the required PhenoSOM packages as described on the [main readme](../README.md)
 2. Download and unzip **PhenoSOM demo FR-FCM-Z3HK.zip** from [here](https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/PhenoSOM_demo_FR-FCM-Z3HK.zip)
-3. Visit [FlowRepository accession ID FR-FCM-Z3HK](http://flowrepository.org/experiments/3637) and download the FCS files from the experiment with "Tcellpanel" in the filename. There should be 39 FCS files totaling about 2.86GB. Move these to the **FCSfiles** subfolder.
+3. Visit [FlowRepository accession ID FR-FCM-Z3HK](http://flowrepository.org/experiments/3636) and download the FCS files from the experiment with "Tcellpanel" in the filename. There should be 39 FCS files totaling about 2.86GB. Move these to the **FCSfiles** subfolder.
 4. Run the **PhenoSOM demo FR-FCM-Z3HK master script.R** script and follow the prompts
 5. After running Step 1, check if your output matches the figure in the demo. Open the PNG file located at **Your_analysis_folder/Maps and plots of SOM nodes/FR-FCM-Z3HK Panel 1 PhenoSOM Step 1 tSNE map of SOM nodes by Rphenograph metacluster k_30 and size scaled to cell number.png** 
 
