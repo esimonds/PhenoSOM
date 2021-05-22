@@ -1,6 +1,6 @@
 # PhenoSOM of CD45-positive metaclusters
 # Author:  Erin Simonds
-# Version: 1.210521
+# Version: 1.210522
 #
 # Summary: This script is meant to be run AFTER an initial round of PhenoSOM on the unclustered data. It
 # takes PhenoGraph clusters as input, selects those that are CD45-positive, deconstructs them back
@@ -77,7 +77,7 @@ set.seed(42)
 
 # Load previous clustering of all tumor cells (Rdata file) from Step 1
 step1results <- dir("PhenoSOM_Step1_output", pattern="\\ results\\.Rdata")
-load(step1results)
+load(file.path("PhenoSOM_Step1_output", step1results))
 
 ################################################# User-defined parameters ##################################################
 
