@@ -11,15 +11,19 @@ The PhenoSOM workflow was used to perform the clustering, differential analyses,
 
 
 ## Q: Should I use PhenoSOM to analyze my own mass cytometry data?
-Probably not, for the reasons below. This script was born in 2016 and many new analysis tools have been published in the years since. I would recommend using more recent or more actively developed mass cytometry data analysis tools. Check out [Cytoforum](http://cytoforum.stanford.edu) for an active community of mass cytometry users and discussions on the latest algorithms.
+Probably not, for three reasons. Firstly, this script was born in 2016 and many new analysis tools have been published in the years since. I would recommend using more recent or more actively developed mass cytometry data analysis tools. Check out [Cytoforum](http://cytoforum.stanford.edu) for an active community of mass cytometry users and discussions on the latest algorithms.
 
-Please also be aware that PhenoSOM doesn't do anything particularly novel -- it simply strings together a few existing R packages that were created by and are maintained by others. PhenoSOM is not an R package. It's just a set of scripts, and it is not actively maintained or supported. The help documentation is limited to what you find in this README, [the Wiki](https://github.com/esimonds/PhenoSOM/wiki), and in the comments in the script itself. I am mainly depositing it here on GitHub for posterity. If you're savvy with R and, despite all these caveats, you want to run your data through PhenoSOM, great -- I hope it's useful to you.
+Secondly, PhenoSOM doesn't do anything particularly novel -- it simply strings together a few existing R packages that were created by and are maintained by others. PhenoSOM is not an R package. It's just a set of scripts, and it is not actively maintained or supported. 
+
+Thirdly, the help documentation is limited to what you find in this README, [the Wiki](https://github.com/esimonds/PhenoSOM/wiki), and in the comments in the script itself. I am mainly depositing it here on GitHub for posterity. 
+
+If you're savvy with R and, despite all these caveats, you want to run your data through PhenoSOM, that's great, and I hope it's useful to you.
 
 
 ## Q: Who should use PhenoSOM?
-The main audience for this GitHub project is bioinformatics researchers who would like to compare and contrast approaches for clustering and/or differential analysis. I think the core workflow of PhenoSOM (e.g. FlowSOM of individual files followed by PhenoGraph of the aggregate) has merit and if it stands up to some more rigorous testing, perhaps someone would be motivated to implement it in a smarter, more user-friendly way. This script evolved a lot over 5 years, and I am not a professional programmer, so I apologize in advance that the code is inelegant, to say the least.
+The main audience for this GitHub project is bioinformatics researchers who would like to compare and contrast approaches for clustering and/or differential analysis. I think the core workflow of PhenoSOM is powerful and useful (e.g. FlowSOM of individual files followed by PhenoGraph of the aggregate; then repeating this on the CD45-positive cells). Perhaps, if it stands up to some more rigorous testing, someone would be motivated to implement it in a smarter, more user-friendly way. This script evolved a lot over 5 years, and I am not a professional programmer, so I apologize that the code is inelegant, to say the least.
 
-In addiiton to bioinformatics researchers, there is a small subset of mass cytometry users at UCSF that have been using the PhenoSOM script in their own research since 2016, and this project is also meant to serve as a resource for them.
+In addition to bioinformatics researchers, there is a small subset of mass cytometry users at UCSF that have been using the PhenoSOM script in their own research since 2016, and this project is also meant to serve as a resource for them.
 
 
 
@@ -28,7 +32,7 @@ The best way to get started with PhenoSOM is to run it on the demo dataset. Ther
 
 
 ## Q: How do I install PhenoSOM?
-PhenoSOM is a series of R scripts -- it is not an R package. However, some R packages are required for PhenoSOM to work. Visit the [Installing PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Installing-PhenoSOM) for details on how to install those.
+PhenoSOM is a set of R scripts -- it is not an R package that requires installation. You need to copy the scripts to a folder containing your data (FCS files) and the required configuration files (CSV and TXT files). However, several R packages are required for PhenoSOM to work. Visit the [Installing PhenoSOM](https://github.com/esimonds/PhenoSOM/wiki/Installing-PhenoSOM) for details on how to install those.
 
 
 ## Q. How do I configure and run PhenoSOM on my own data?
