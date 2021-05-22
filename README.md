@@ -4,11 +4,6 @@
 <img src="https://raw.githubusercontent.com/esimonds/PhenoSOM/main/FR-FCM-Z3HK_demo/images/FR-FCM-Z3HK_Demo_Step2_output_success.png" alt="tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster" width="250"/>
 
 
-
-# Note:  Code is not yet visible in this repository. I'm just getting the documentation up first. The code will be posted when the article is published.
-
-
-
 ## Q: What is PhenoSOM?
 PhenoSOM is an R script that links the published FlowSOM, PhenoGraph, and edgeR algorithms into a single pipeline for differential analysis of cluster abundance in mass cytometry data.
 
