@@ -1,4 +1,4 @@
-# PhenoSOM: An R script for identifying clusters with differential abundance in mass cytometry data
+# PhenoSOM: An R workflow for clustering and differential abundance in mass cytometry data
 
 
 <img src="https://raw.githubusercontent.com/esimonds/PhenoSOM/main/FR-FCM-Z3HK_demo/images/FR-FCM-Z3HK_Demo_Step2_output_success.png" alt="tSNE plot of 3900 SOM nodes colored by PhenoGraph cluster" width="250"/>
