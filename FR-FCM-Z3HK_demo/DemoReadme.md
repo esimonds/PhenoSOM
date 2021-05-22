@@ -4,7 +4,8 @@
 Note: The input data for this demo is 2.86GB. It takes about 3 hours (mostly unattended) to run this demo all the way through, from raw data to volcano plots. 
 
 ## Goal of the demo:
-By following this demo, you will recreate the plots in Figure 1A (center panel) and Figure 1B (volcano plot and heatmap) from Simonds et al *JITC* (2021)
+By following this demo, you will recreate the plots in Figure 1A (center panel) and Figure 1B (volcano plot and heatmap) from Simonds et al *JITC* (2021):
+
 <img src="https://github.com/esimonds/PhenoSOM/raw/main/FR-FCM-Z3HK_demo/images/Simonds_et_al_JITC_2021_Figure_1.png" alt="Simonds et al JITC 2021 Figure 1" width="250"/>
 
 ## Steps to run the demo:
