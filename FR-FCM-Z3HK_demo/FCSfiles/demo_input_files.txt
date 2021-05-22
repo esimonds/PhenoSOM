@@ -1,5 +1,0 @@
-Q. What goes in this subfolder?
-A. Visit FlowRepository accession ID FR-FCM-Z3HK and download the FCS files from the experiment with "Tcellpanel" in the filename. There should be 39 FCS files totaling about 2.86GB. Move these to the FCSfiles subfolder.
-
-Q. How can I be sure I have the right files?
-A. Refer to "Demo input verification/FR-FCM-Z3HK_demo_FCS_input_MD5_hashes.md5"  You can should obtain md5 checksums for the files on your local hard drive and make sure they match this file.
