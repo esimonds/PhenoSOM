@@ -1,6 +1,6 @@
 # Run edgeR on PhenoSOM results
 # Author:  Erin Simonds
-# Version: 1.210521
+# Version: 1.210522
 #
 #
 # Overall workflow of this script:   
@@ -149,7 +149,7 @@ dev.off()
 
 # Pretty plots of P-values in PCA space
 plotdata <- cbind(results, pcamap$x[,1:2])
-direction <- as.character(qresults$logFC > 0)
+direction <- as.character(results$logFC > 0)
 direction[plotdata$logFC > 0] <- "Increased"
 direction[plotdata$logFC <= 0] <- "Decreased"
 pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph metaclusters edgeR PCA plot.pdf")), width=8, height=5)
@@ -175,7 +175,7 @@ clustercolors[is.na(clustercolors)] <- "gray80"
 clustercolors[!is.sig] <- "gray80"
 heatmapdata <- t(as.matrix(clustercentroids[,plottingChannels]))
 labCols <- paste0("PhenoGraphMetacluster_",sprintf("%02d", clustercentroids$PhenoGraphMetacluster[]))
-labCols[is.very.sig] <- paste0(labCols[is.very.sig],"*")
+labCols[is.sig] <- paste0(labCols[is.sig],"*")
 pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph metacluster medians - plotting markers.pdf")), width=15, height=20)
 heatmap.2(heatmapdata, col=mycolorfun, labCol=labCols, 
           labRow = key.channels$MarkerName[key.channels$MarkerChannel %in% plottingChannels], ColSideColors = clustercolors, colCol = clustercolors,
@@ -196,7 +196,7 @@ plotdata <- cbind.data.frame(FCSprettyname=key.fcsids$FCSprettyname[has_conditio
 rownames(plotdata) <- NULL
 plotdata2 <- gather(data=plotdata, key=Metacluster, value=Percentage, allclusters)
 plotdata2$Percentage[plotdata2$Percentage==0] <- 2^-10
-plotdata2$Metacluster[plotdata2$Metacluster %in% sort(unique(plotdata2$Metacluster))[is.very.sig]] <- paste0(plotdata2$Metacluster[plotdata2$Metacluster %in% sort(unique(plotdata2$Metacluster))[is.very.sig]], "*")
+plotdata2$Metacluster[plotdata2$Metacluster %in% sort(unique(plotdata2$Metacluster))[is.sig]] <- paste0(plotdata2$Metacluster[plotdata2$Metacluster %in% sort(unique(plotdata2$Metacluster))[is.sig]], "*")
 pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph boxplots of all metaclusters (raw values).pdf")), width=(length(allclusters)/5)+3, height=5)
 p <- ggplot(plotdata2, aes(Metacluster, Percentage))
 print(p + geom_boxplot(aes(fill = conditions, colour = conditions)) +
@@ -218,16 +218,18 @@ dev.off()
 # Create boxplots of per-sample frequencies of significant clusters
 if(sum(is.sig) >= 1){
   sigclusters <- rownames(results)[is.sig]
+  sigclustercolors <- clustercolors[as.numeric(sigclusters)]
   plotdata <- cbind.data.frame(FCSprettyname=key.fcsids$FCSprettyname[has_condition_mask], conditions=conditions[has_condition_mask], t(as.data.frame(clusterpercentages)[sigclusters,]))
   rownames(plotdata) <- NULL
   plotdata2 <- gather(data=plotdata, key=Metacluster, value=Percentage, sigclusters)
   plotdata2$Percentage[plotdata2$Percentage==0] <- 2^-10
+  plotdata2$Metacluster <- paste0(plotdata2$Metacluster, "*")
   pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph boxplots of significant metaclusters (raw values).pdf")), width=(length(sigclusters)/5)+3, height=5)
   p <- ggplot(plotdata2, aes(Metacluster, Percentage))
   print(p + geom_boxplot(aes(fill = conditions, colour = conditions)) +
           geom_point(aes(Metacluster, Percentage, fill = conditions), position=position_dodge(width=0.75), size=0.5, show.legend=FALSE) +
           scale_colour_manual(values=c("grey30", "navy")) + scale_fill_manual(values=c("grey70", "#3977AF")) +
-          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1)) + expand_limits(y=0) +
+          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1, colour = sigclustercolors)) + expand_limits(y=0) +
           ggtitle(analysisname, subtitle = paste("edgeR significant metaclusters (raw values)")))
   dev.off()
   pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph boxplots of significant metaclusters (log scale).pdf")), width=(length(sigclusters)/5)+3, height=5)
@@ -235,40 +237,13 @@ if(sum(is.sig) >= 1){
   print(p + geom_boxplot(aes(fill = conditions, colour = conditions)) +
           geom_point(aes(Metacluster, log2(Percentage), fill = conditions), position=position_dodge(width=0.75), size=0.5, show.legend=FALSE) +
           scale_colour_manual(values=c("grey30", "navy")) + scale_fill_manual(values=c("grey70", "#3977AF")) + 
-          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1)) + expand_limits(y=0) +
+          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1, colour = sigclustercolors)) + expand_limits(y=0) +
           ggtitle(analysisname, subtitle = paste("edgeR significant metaclusters (log scale)")))
   dev.off()
 } else {
-  print(paste("[Warning] No clusters had uncorrected p-values below", BH_FDR_pval_threshold))
+  print(paste("[Warning] No clusters had uncorrected p-values below 0.05"))
 }
 
-
-# Create boxplots of per-sample frequencies of very significant clusters (BH_FDR-corrected P-value < threshold)
-if(sum(is.very.sig) >= 1){
-  sigclusters <- rownames(results)[is.very.sig]
-  plotdata <- cbind.data.frame(FCSprettyname=key.fcsids$FCSprettyname[has_condition_mask], conditions=conditions[has_condition_mask], t(as.data.frame(clusterpercentages)[sigclusters,]))
-  rownames(plotdata) <- NULL
-  plotdata2 <- gather(data=plotdata, key=Metacluster, value=Percentage, sigclusters)
-  plotdata2$Percentage[plotdata2$Percentage==0] <- 2^-10
-  pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph boxplots of FDR significant metaclusters (raw values).pdf")), width=(length(sigclusters)/5)+3, height=5)
-  p <- ggplot(plotdata2, aes(Metacluster, Percentage))
-  print(p + geom_boxplot(aes(fill = conditions, colour = conditions)) +
-          geom_point(aes(Metacluster, Percentage, fill = conditions), position=position_dodge(width=0.75), size=0.5, show.legend=FALSE) +
-          scale_colour_manual(values=c("grey30", "navy")) + scale_fill_manual(values=c("grey70", "#3977AF")) + 
-          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1)) + expand_limits(y=0) +
-          ggtitle(analysisname, subtitle = paste("edgeR FDR-significant metaclusters (raw scale)")))
-  dev.off()
-  pdf(file = file.path(outdir2, paste0(analysisname," Rphenograph boxplots of FDR significant metaclusters (log scale).pdf")), width=(length(sigclusters)/5)+3, height=5)
-  p <- ggplot(plotdata2, aes(Metacluster, log2(Percentage)))
-  print(p + geom_boxplot(aes(fill = conditions, colour = conditions)) +
-          geom_point(aes(Metacluster, log2(Percentage), fill = conditions), position=position_dodge(width=0.75), size=0.5, show.legend=FALSE) +
-          scale_colour_manual(values=c("grey30", "navy")) + scale_fill_manual(values=c("grey70", "#3977AF")) + 
-          theme(panel.background = element_rect(fill="grey90"), axis.text.x = element_text(angle = 90, hjust = 1)) + expand_limits(y=0) +
-          ggtitle(analysisname, subtitle = paste("edgeR FDR-significant metaclusters (log scale)")))
-  dev.off()
-} else {
-  print(paste("[Warning] No clusters had BH_FDR-corrected p-values below", BH_FDR_pval_threshold))
-}
 
 # Save results
 save.image(file = file.path(outdir2, paste0(analysisname," edgeR results.Rdata")))
